@@ -14,7 +14,7 @@ function setup() {
     fill("white");
     rect(150, 300, 100, 20);
 
-    line(195,140,195,50);
+    line(195, 140, 195, 50);
 
-    circle(195,50,30);
+    circle(195, 50, 30);
 }
