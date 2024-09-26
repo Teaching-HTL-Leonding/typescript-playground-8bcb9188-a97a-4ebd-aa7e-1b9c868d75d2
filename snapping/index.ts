@@ -15,8 +15,8 @@ function mouseMoved() {
   fill("white");
   rect(x - 1, y - 10, 2, 20);
   rect(x - 10, y - 1, 20, 2);
-        fill("white");
-    noStroke();
+  fill("white");
+  noStroke();
 
   text(` ${x}/${y}`, width - 200, height - 5);
 
