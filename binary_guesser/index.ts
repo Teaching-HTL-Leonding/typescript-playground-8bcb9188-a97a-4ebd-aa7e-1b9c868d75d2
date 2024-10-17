@@ -84,6 +84,6 @@ function mouseClicked() {
   text(binaryDigit2, 211, 150)
   text(binaryDigit1, 148, 150)
     text(`${num} in binary?`, 250, 50);
-    text(`Correct!`,200,300)
+    text(`Correct!`,250,250)
   }
 }
