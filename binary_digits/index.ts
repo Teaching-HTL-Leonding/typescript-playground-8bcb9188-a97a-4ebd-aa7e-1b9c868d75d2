@@ -1,22 +1,20 @@
-
-
 function setup() {
   createCanvas(500, 300)
   background("black")
-  const num = Math.floor(random(0, 1_000_000));
+  const num = Math.floor(random(0, 64));
 
- const lastDigit1 = num % 10;
-  const numWithoutLastDigit = Math.floor(num / 10);
-  const lastDigit2 = numWithoutLastDigit % 10;
-  const numWithoutLastDigit1 = Math.floor(numWithoutLastDigit / 10);
-  const lastDigit3 =numWithoutLastDigit1 % 10;
-  const numWithoutLastDigit2 = Math.floor(numWithoutLastDigit1 / 10);
-  const lastDigit4 = numWithoutLastDigit2 % 10;
-  const numWithoutLastDigit3 = Math.floor( numWithoutLastDigit2/ 10);
-  const lastDigit5 = numWithoutLastDigit3 % 10;
-  const numWithoutLastDigit4 = Math.floor( numWithoutLastDigit3/ 10);
-  const lastDigit6 = numWithoutLastDigit4 % 10;
-  const numWithoutLastDigit5 = Math.floor( numWithoutLastDigit4/ 10);
+ const lastDigit1 = num % 2;
+  const numWithoutLastDigit = Math.floor(num / 2);
+  const lastDigit2 = numWithoutLastDigit % 2;
+  const numWithoutLastDigit1 = Math.floor(numWithoutLastDigit / 2);
+  const lastDigit3 =numWithoutLastDigit1 % 2;
+  const numWithoutLastDigit2 = Math.floor(numWithoutLastDigit1 / 2);
+  const lastDigit4 = numWithoutLastDigit2 % 2;
+  const numWithoutLastDigit3 = Math.floor( numWithoutLastDigit2/ 2);
+  const lastDigit5 = numWithoutLastDigit3 % 2;
+  const numWithoutLastDigit4 = Math.floor( numWithoutLastDigit3/ 2);
+  const lastDigit6 = numWithoutLastDigit4 % 2;
+  const numWithoutLastDigit5 = Math.floor( numWithoutLastDigit4/ 2);
   textAlign(CENTER, CENTER);
   fill("yellow");
   noStroke();
