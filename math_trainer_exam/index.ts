@@ -63,7 +63,7 @@ function setup() {
     background("black");
     fill("yellow")
     textSize(25)
-
+    
     text(`${operand1}`, width / 3, height / 4)
     text(`${operand2}`, width / 8 * 5, height / 4)
     text(`${message}`, width / 2, height / 4)
