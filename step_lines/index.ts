@@ -27,11 +27,11 @@ function setup() {
     let x = GRID
     let p = GRID
     while (p < SIZE && x < SIZE) {
-    stroke("red")
+        stroke("red")
         line(x, p, SIZE - GRID, p)
-       stroke("yellow")
-       line(x,p,GRID,p)
-    
+        stroke("yellow")
+        line(x, p, GRID, p)
+
         p += GRID
         x += GRID
     }
