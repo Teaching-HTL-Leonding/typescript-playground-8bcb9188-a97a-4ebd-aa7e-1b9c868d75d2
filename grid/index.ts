@@ -11,13 +11,13 @@ function setup() {
     stroke("lightgray");
 
     // Draw a grid by using a while loop.
-    
+
     // Part 1: Draw vertical lines
     // Here you see how to use a while loop.
     let i = GRID;            // STEP 1: Initialize the loop variable
     while (i < SIZE) {       // STEP 2: Check the loop condition
         line(i, 0, i, SIZE);
-        line(0,i,SIZE,i) // STEP 3: Do whatever you want to do repeatedly
+        line(0, i, SIZE, i) // STEP 3: Do whatever you want to do repeatedly
         i += GRID;           // STEP 4: Update the loop variable
     }
 
