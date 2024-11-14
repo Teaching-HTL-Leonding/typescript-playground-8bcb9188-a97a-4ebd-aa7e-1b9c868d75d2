@@ -10,12 +10,14 @@ function setup() {
 function mouseMoved() {
   background("black");
   strokeWeight(2);
-  stroke("green")
   let i=MARGIN
 while(i<SIZE){
+  stroke("green")
 line(i,MARGIN,mouseX,mouseY)
 line(i,SIZE-MARGIN,mouseX,mouseY)
-stroke("")
+stroke("yellow")
+line(SIZE-MARGIN,i,mouseX,mouseY)
+line(MARGIN,i,mouseX,mouseY)
 i+=MARGIN
 }
   // <<< Add your code here
