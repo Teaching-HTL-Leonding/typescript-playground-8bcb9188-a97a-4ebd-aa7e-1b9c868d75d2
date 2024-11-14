@@ -15,6 +15,7 @@ function mouseMoved() {
 while(i<SIZE){
 line(i,MARGIN,mouseX,mouseY)
 line(i,SIZE-MARGIN,mouseX,mouseY)
+stroke("")
 i+=MARGIN
 }
   // <<< Add your code here
