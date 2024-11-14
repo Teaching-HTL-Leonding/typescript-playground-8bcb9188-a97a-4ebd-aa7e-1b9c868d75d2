@@ -10,29 +10,32 @@ function setup() {
 
     // Draw vertical lines
     let i = GRID;
-    let x=SIZE-GRID
     while (i < SIZE) {
         line(i, 0, i, SIZE);
         i += GRID;
     }
 
-    // Draw horizontal lines
-    i = GRID;
-        while (i < SIZE) {
-        strokeWeight(3)
-        stroke("red")
-        line(GRID,i,x,i)
-        i += GRID;
+    let o = GRID
+    while (o < SIZE) {
+        line(0, o, SIZE, o);
+        o += GRID;
     }
-    while (i < SIZE) {
-        line(0, i, SIZE, i);
-        i += GRID;
-    }
+
 
     strokeWeight(2);
 
+    let x = GRID
+    let p = GRID
+    while (p < SIZE && x < SIZE) {
+    stroke("red")
+        line(x, p, SIZE - GRID, p)
+       stroke("yellow")
+       line(x,p,GRID,p)
+    
+        p += GRID
+        x += GRID
+    }
     // Draw left part of the lines
-    stroke("yellow");
     // <<< Write your code here
 
     // Draw right part of the lines
