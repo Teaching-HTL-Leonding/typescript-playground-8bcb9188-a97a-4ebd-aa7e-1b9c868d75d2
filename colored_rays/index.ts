@@ -1,5 +1,5 @@
 const SIZE = 400;    // Canvas size (square)
-const MARGIN = 25; // Margin between the edges and the rays.
+const MARGIN = 10 // Margin between the edges and the rays.
 let raycolor = 0
 // This is also the distance between the rays.
 function setup() {
