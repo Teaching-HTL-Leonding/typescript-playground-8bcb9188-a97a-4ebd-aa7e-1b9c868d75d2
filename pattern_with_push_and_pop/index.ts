@@ -9,17 +9,17 @@ function setup() {
     stroke("yellow");
     noFill();
 
-    let y = 0;
+    for(let y = 0;y<=SIZE)
     while (y <= SIZE) {
         // Save the current origin (left-most position in the current row)
         push();
 
-        let x = 0;
-        while (x <= SIZE) {
+       for(let x = 0;x<=SIZE;x+=CIRCLE_DIAMETER) {
+
             circle(0, 0, CIRCLE_DIAMETER);
             translate(CIRCLE_DIAMETER, 0); // Move origin to the right
-            x += CIRCLE_DIAMETER;
-        }
+       }
+
 
         // Restore the stored origin -> back to left-most position in the current row
         pop();
