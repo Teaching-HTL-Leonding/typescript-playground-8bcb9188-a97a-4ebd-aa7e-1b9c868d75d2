@@ -9,14 +9,14 @@ function setup() {
     stroke("yellow");
     noFill();
 
-    for(let y = 0;y<=SIZE;y+=CIRCLE_DIAMETER){
+    for (let y = 0; y <= SIZE; y += CIRCLE_DIAMETER) {
         push();
 
-       for(let x = 0;x<=SIZE;x+=CIRCLE_DIAMETER) {
+        for (let x = 0; x <= SIZE; x += CIRCLE_DIAMETER) {
 
             circle(0, 0, CIRCLE_DIAMETER);
             translate(CIRCLE_DIAMETER, 0); // Move origin to the right
-       }
+        }
         pop();
         translate(0, CIRCLE_DIAMETER);
     }
