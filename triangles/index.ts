@@ -12,12 +12,14 @@ function setup() {
     strokeWeight(1);
     stroke("yellow");
     noFill();
-for(let y=0;y<=SIZE;y+=SIDE_LENGTH){
+    for (let y = 0; y <= SIZE; y += SIDE_LENGTH) {
 
         push()
-    for(let x=0;x<=SIZE;x+=SIDE_LENGTH){
-        triangle(0,SIDE_LENGTH,SIDE_LENGTH,SIDE_LENGTH,SIDE_LENGTH/2,0)
-        translate(SIDE_LENGTH,0)
-    }// <<< Add code to draw the triangles here
-}
+        for (let x = 0; x <= SIZE; x += SIDE_LENGTH) {
+            triangle(0, SIDE_LENGTH, SIDE_LENGTH, SIDE_LENGTH, SIDE_LENGTH / 2, 0)
+            translate(SIDE_LENGTH, 0)
+        }
+        pop()
+        translate(0, SIDE_LENGTH)// <<< Add code to draw the triangles here
+    }
 }
