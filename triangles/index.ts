@@ -16,10 +16,10 @@ function setup() {
 
         push()
         for (let x = 0; x <= SIZE; x += SIDE_LENGTH) {
-            triangle(0, SIDE_LENGTH, SIDE_LENGTH, SIDE_LENGTH, SIDE_LENGTH / 2, 0)
+            triangle(0,HEIGHT,SIDE_LENGTH,HEIGHT,SIDE_LENGTH/2, 0)
             translate(SIDE_LENGTH, 0)
         }
         pop()
-        translate(0, SIDE_LENGTH)// <<< Add code to draw the triangles here
+        translate(0, HEIGHT)// <<< Add code to draw the triangles here
     }
 }
