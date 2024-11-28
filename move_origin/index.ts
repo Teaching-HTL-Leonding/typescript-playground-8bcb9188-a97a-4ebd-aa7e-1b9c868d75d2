@@ -9,8 +9,8 @@ function setup() {
   stroke("yellow");
   noFill();
 
-for(let i=0;i<=SIZE;i=i+50){
-  circle(0,0,50)
-  translate(50,50)
-}
+  for (let i = 0; i <= SIZE; i = i + 50) {
+    circle(0, 0, 50)
+    translate(50, 50)
+  }
 }
