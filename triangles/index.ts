@@ -16,7 +16,7 @@ function setup() {
 
         push()
         for (let x = 0; x <= SIZE; x += SIDE_LENGTH) {
-            triangle(0,HEIGHT,SIDE_LENGTH,HEIGHT,SIDE_LENGTH/2, 0)
+            triangle(0, HEIGHT, SIDE_LENGTH, HEIGHT, SIDE_LENGTH / 2, 0)
             translate(SIDE_LENGTH, 0)
         }
         pop()
