@@ -20,6 +20,6 @@ function setup() {
             translate(SIDE_LENGTH, 0)
         }
         pop()
-        translate(0, HEIGHT)// <<< Add code to draw the triangles here
+        translate(0, HEIGHT-HEIGHT/2)// <<< Add code to draw the triangles here
     }
 }
