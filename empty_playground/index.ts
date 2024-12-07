@@ -1,32 +1,34 @@
 function setup() {
-  createCanvas(500, 500);
+    createCanvas(400, 400)
+    background("white")
+    textAlign(CENTER)
+    textSize(50)
+    text(`COOKIES 
+0`, width / 2, 50)
+    textSize(100)
+    text(`🍪`, width / 2, height / 2)
+}
+let counter = 1
+function mouseClicked() {
+
+    if (mouseX >= 150 && mouseX <= 250 && mouseY >= 120 && mouseY <= 220) {
+        counter *= 2
+
+    }
+noFill()
+    background("white")
+    textAlign(CENTER)
+    textSize(50)
+    text(`COOKIES 
+${counter}`, width / 2, 50)
+    textSize(100)
+    text(`🍪`, width / 2, height / 2)
+    if(counter>=100){
+        noFill()
+        strokeWeight(12)
+        stroke("red")
+        circle(width/2,height/2-35,120)
+    }
 }
 
-let circleDiameter = 50;
-
-let circleCenterX = 0;
-let direction = 5;
-let circleCenterY = 0
-let direction2 = 2
-
-// Remember: The _draw_ method is called FOR EVERY FRAME
-function draw() {
-
-  background("black");
-
-  stroke("white");
-  
-  
-strokeWeight(3);
-                   
-  //                         v
-
-  fill("lightblue")
-  circle(width / 2, circleCenterY, circleDiameter)
-  circleCenterY += direction2
-  if (circleCenterY>= height || circleCenterY <= 0) {
-    direction2 *= -1.5
-  circleDiameter+=30
-  }
-}
 
