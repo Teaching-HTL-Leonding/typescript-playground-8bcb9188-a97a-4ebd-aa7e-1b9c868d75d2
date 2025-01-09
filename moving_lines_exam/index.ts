@@ -43,6 +43,8 @@ function setup() {
 }
 function draw() {
     background("black")
+    rect(10,10,50,50)
+    rect(70,10,50,50)
     for (let i = 0; i < lines[0]; i++) {
         push()
         stroke(lineColor[i], 100, 100);
@@ -69,4 +71,38 @@ function draw() {
         pop()
     }
 
+}
+function mouseClicked(){
+    if(mouseX<60&&mouseX>10&&mouseY<60&&mouseY>10){
+                lineStartX.push(random(50, 450))
+        lineStartY.push(random(50, 450))
+        lineEndX.push(random(50, 450))
+        lineEndY.push(random(50, 450))
+
+        lineStartDX.push(random(0, 5))
+        lineStartDY.push(random(0, 5))
+        lineEndDX.push(random(0, 5))
+        lineEndDY.push(random(0, 5))
+
+
+
+        lineColor.push(random(minColor, maxColor))
+        lines[0]++
+    }
+        if(mouseX<120&&mouseX>70&&mouseY<60&&mouseY>10){
+                lineStartX.splice(random(50, 450))
+        lineStartY.splice(random(50, 450))
+        lineEndX.splice(random(50, 450))
+        lineEndY.splice(random(50, 450))
+
+        lineStartDX.splice(random(0, 5))
+        lineStartDY.splice(random(0, 5))
+        lineEndDX.splice(random(0, 5))
+        lineEndDY.splice(random(0, 5))
+
+
+
+        lineColor.push(random(minColor, maxColor))
+        
+    }
 }
