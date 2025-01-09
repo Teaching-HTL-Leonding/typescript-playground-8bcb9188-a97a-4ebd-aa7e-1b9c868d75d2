@@ -1,55 +1,72 @@
 
 const CONFIGURATION = "5;0-360";
 
-let lineStartX: number[] = [];    
-let lineStartY: number[] = [];  
-let lineEndX: number[] = [];   
-let lineEndY: number[] = [];     
-let lineColor: number[] = []; 
+let lineStartX: number[] = [];
+let lineStartY: number[] = [];
+let lineEndX: number[] = [];
+let lineEndY: number[] = [];
+let lineColor: number[] = [];
 let lineStartDX: number[] = [];
 let lineStartDY: number[] = [];
-let lineEndDX: number[] = [];                   
-let lineEndDY: number[] = [];      
-  let lines: number[]=[5]
+let lineEndDX: number[] = [];
+let lineEndDY: number[] = [];
+let lines: number[] = [5]
 
-let minColor=0
-let maxColor=360
+let minColor = 0
+let maxColor = 360
 
 
 
 function setup() {
     createCanvas(500, 500);
     colorMode(HSB);
-for(let i=0;i < lines[0];i++){
+    for (let i = 0; i < lines[0]; i++) {
 
-lineStartX.push(random(50,450))
-lineStartY.push(random(50,450))
-lineEndX.push(random(50,450))
-lineEndY.push(random(50,450))
+        lineStartX.push(random(50, 450))
+        lineStartY.push(random(50, 450))
+        lineEndX.push(random(50, 450))
+        lineEndY.push(random(50, 450))
 
-lineStartDX.push(random(0,5))
-lineStartDY.push(random(0,5))
-lineEndDX.push(random(0,5))
-lineEndDY.push(random(0,5))
+        lineStartDX.push(random(0, 5))
+        lineStartDY.push(random(0, 5))
+        lineEndDX.push(random(0, 5))
+        lineEndDY.push(random(0, 5))
 
 
 
-lineColor.push(random(minColor,maxColor))
-}
+        lineColor.push(random(minColor, maxColor))
+    }
 
-    
-    
+
+
 
 }
 function draw() {
-background("black")
-for(let i = 0;i<10;i++){
-    push()
+    background("black")
+    for (let i = 0; i < lines[0]; i++) {
+        push()
         stroke(lineColor[i], 100, 100);
-    strokeWeight(2);
-    line(lineStartX[i], lineStartY[i], lineEndX[i], lineEndY[i]);
+        strokeWeight(2);
+        line(lineStartX[i], lineStartY[i], lineEndX[i], lineEndY[i]);
 
-    lineStartX[i]+=lineStartDX[i]
-}
-  
+        lineStartX[i] += lineStartDX[i]
+        lineStartY[i] += lineStartDY[i]
+        lineEndX[i] += lineEndDX[i]
+        lineEndY[i] += lineEndDY[i]
+
+        if (lineStartX[i] < 0 || lineStartX[i] > width) {
+            lineStartDX[i] = -lineStartDX[i]
+        }
+        if (lineStartY[i] < 0 || lineStartY[i] > width) {
+            lineStartDY[i] = -lineStartDY[i]
+        }
+        if (lineEndX[i] < 0 || lineEndX[i] > width) {
+            lineEndDX[i] = -lineEndDX[i]
+        }
+        if (lineEndY[i] < 0 || lineEndY[i] > width) {
+            lineEndDY[i] = -lineEndDY[i]
+        }
+        pop()
+    }
+
 }
