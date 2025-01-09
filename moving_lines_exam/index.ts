@@ -1,108 +1,55 @@
 
 const CONFIGURATION = "5;0-360";
 
-let lineStart: number[] = [0,0];    
-let lineEnd: number[] = [0,0];      
-let lineColor: number = 0;          
+let lineStartX: number[] = [];    
+let lineStartY: number[] = [];  
+let lineEndX: number[] = [];   
+let lineEndY: number[] = [];     
+let lineColor: number[] = []; 
+let lineStartDX: number[] = [];
+let lineStartDY: number[] = [];
+let lineEndDX: number[] = [];                   
+let lineEndDY: number[] = [];      
+  let lines: number[]=[5]
 
-let lineStartDeltas: number[] = [0,0]; 
-let lineEndDeltas: number[] = [0,0];   
+let minColor=0
+let maxColor=360
 
-let colorRange: number[] = [0, 360];   
-let lines: number[]=[0,5]
 
 
 function setup() {
     createCanvas(500, 500);
     colorMode(HSB);
-    
-   push()
-    lineStart[0] = random(50, 450);  
-    lineStart[1] = random(50, 450);  
-    lineEnd[0] = random(50, 450);    
-    lineEnd[1] = random(50, 450);    
+for(let i=0;i < lines[0];i++){
+
+lineStartX.push(random(50,450))
+lineStartY.push(random(50,450))
+lineEndX.push(random(50,450))
+lineEndY.push(random(50,450))
+
+lineStartDX.push(random(0,5))
+lineStartDY.push(random(0,5))
+lineEndDX.push(random(0,5))
+lineEndDY.push(random(0,5))
 
 
-    lineStartDeltas[0] = random(0, 5);  
-    lineStartDeltas[1] = random(0, 5);  
-    lineEndDeltas[0] = random(0, 5);    
-    lineEndDeltas[1] = random(0, 5);    
 
-    
-    lineColor = random(colorRange[0], colorRange[1]); 
-    pop()
+lineColor.push(random(minColor,maxColor))
+}
 
     
     
 
 }
 function draw() {
-    background("black");
-    rect(10,10,50,50)
-    rect(70,10,50,50)
-    textSize(30)
-    text(`➕`,15,45)
-    text(`➖`,75,45)
-    push();
-   
-    stroke(lineColor, 100, 100);
+background("black")
+for(let i = 0;i<10;i++){
+    push()
+        stroke(lineColor[i], 100, 100);
     strokeWeight(2);
-    line(lineStart[0], lineStart[1], lineEnd[0], lineEnd[1]);
+    line(lineStartX[i], lineStartY[i], lineEndX[i], lineEndY[i]);
 
-
-
-    lineStart[0] += lineStartDeltas[0]; 
-    lineStart[1] += lineStartDeltas[1];
-    lineEnd[0] += lineEndDeltas[0];     
-    lineEnd[1] += lineEndDeltas[1];     
-
-   
-    if (lineStart[0] < 0 || lineStart[0] > width) {
-        lineStartDeltas[0] = -lineStartDeltas[0];
-    }
-    if (lineStart[1] < 0 || lineStart[1] > height) {
-        lineStartDeltas[1] = -lineStartDeltas[1];
-    }
-
-    if (lineEnd[0] < 0 || lineEnd[0] > width) {
-        lineEndDeltas[0] = -lineEndDeltas[0];
-    }
-    if (lineEnd[1] < 0 || lineEnd[1] > height) {
-        lineEndDeltas[1] = -lineEndDeltas[1];
-    }
-
-    pop();
-  
+    lineStartX[i]+=lineStartDX[i]
 }
-function mouseClicked(){
-    if(mouseX<60&&mouseX>10&&mouseY<60&&mouseY>60){
-          push();
-   
-    stroke(lineColor, 100, 100);
-    strokeWeight(2);
-    line(lineStart[0], lineStart[1], lineEnd[0], lineEnd[1]);
-
   
-    lineStart[0] += lineStartDeltas[0]; 
-    lineStart[1] += lineStartDeltas[1];
-    lineEnd[0] += lineEndDeltas[0];     
-    lineEnd[1] += lineEndDeltas[1];     
-
-   
-    if (lineStart[0] < 0 || lineStart[0] > width) {
-        lineStartDeltas[0] = -lineStartDeltas[0];
-    }
-    if (lineStart[1] < 0 || lineStart[1] > height) {
-        lineStartDeltas[1] = -lineStartDeltas[1];
-    }
-
-    if (lineEnd[0] < 0 || lineEnd[0] > width) {
-        lineEndDeltas[0] = -lineEndDeltas[0];
-    }
-    if (lineEnd[1] < 0 || lineEnd[1] > height) {
-        lineEndDeltas[1] = -lineEndDeltas[1];
-    }
-
-    pop();  
-    }
 }
