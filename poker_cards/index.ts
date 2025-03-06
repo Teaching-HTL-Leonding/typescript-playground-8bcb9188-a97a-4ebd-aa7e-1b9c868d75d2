@@ -21,7 +21,6 @@ function setup() {
     //                 |           (e.g. royalFlush, straightFlush, fourOfAKind, ...)
     //                 v
     const handString = random;
-
     hand = splitCardsString(handString);
 }
 
@@ -78,19 +77,17 @@ function draw() {
 * The function splits the string into an array of cards.
 */
 function splitCardsString(cards: string): string[] {
-    let currentNumber = "";
-    let answer: string[] = [];
+    let answer: string[] = []
+    let temp = "";
     for (let i = 0; i < cards.length; i++) {
         if (cards[i] === ",") {
-            answer.push(currentNumber)
-            currentNumber = ""
-        } else {
-            currentNumber += cards[i];
-
+            answer.push(temp)
+            temp = ""
         }
+        else { temp = temp + cards[i] }
     }
-    answer.push(currentNumber)
-    return answer
+    answer.push(temp)
+    return answer;
 }
 
 /**
@@ -103,25 +100,16 @@ function splitCardsString(cards: string): string[] {
 * of e.g. "0H" is 10, not 0!
 */
 function getCardValue(card: string): number {
-const value=card[0]
-let name :string
-switch(value){
-case`1`:
-case`2`:
-case`3`:
-case`4`:
-case`5`:
-case`6`:
-case`7`:
-case`8`:
-case`9`:
-name=value;
-break;
-case`0`:name=`10`;
-break;
-}
-console.log(name)
-    return  parseInt(name);
+
+    const value = parseInt(card[0]);
+
+    if (value === 0) {
+        return 10;
+    }
+    else {
+        return value;
+    }
+
 }
 
 /**
@@ -138,9 +126,25 @@ console.log(name)
 * before to get the value of the card.
 */
 function getCardDescription(card: string): string {
-    // DELETE the following line and replace it with
-    // a working solution for the function.
-    return `${getCardValue(card)} of UNKNOWN`;
+    const shortsuit = card[1]
+    let longsuit = ""
+    switch (shortsuit) {
+
+        case "H": longsuit = "hearts"
+            break;
+        case "S": longsuit = "spades"
+            break;
+        case "D": longsuit = "diamonds"
+            break;
+        case "C": longsuit = "Clubs"
+            break;
+    }
+
+
+
+
+
+    return `${getCardValue(card)} of ${longsuit}`;
 }
 
 /**
@@ -153,9 +157,18 @@ function getCardDescription(card: string): string {
 * Tip: Consider using the functions that you wrote before.
 */
 function getHighestCard(hand: string[]): string {
-    // DELETE the following line and replace it with
-    // a working solution for the function.
-    return getCardDescription('1H');
+
+    let highestvalue = 0
+    let description = ""
+    for (let i = 0; i < hand.length; i++) {
+
+        if (getCardValue(hand[i]) >= highestvalue) {
+            description = getCardDescription(hand[i])
+            highestvalue = getCardValue(hand[i])
+        }
+    }
+
+    return `${description}`;
 }
 
 /**
@@ -169,9 +182,11 @@ function getHighestCard(hand: string[]): string {
 * [0, 0, 0, 0, 0, 2, 0, 2, 1, 0].
 */
 function getCounts(hand: string[]): number[] {
-    // DELETE the following line and replace it with
-    // a working solution for the function.
-    return [0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+    let array: number[] = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+    for (let i = 0; i < hand.length; i++) {
+        array[parseInt(hand[i][0])]++
+    }
+    return array;
 }
 
 /**
@@ -183,9 +198,12 @@ function getCounts(hand: string[]): number[] {
 * A hand is a flush if all cards have the same suite.
 */
 function isFlush(hand: string[]): boolean {
-    // DELETE the following line and replace it with
-    // a working solution for the function.
-    return false;
+    if (hand[0][1] === hand[1][1] && hand[0][1] === hand[2][1] && hand[0][1] === hand[3][1] && hand[0][1] === hand[4][1]) {
+        return true;
+    }
+    else {
+        return false;
+    }
 }
 
 /**
@@ -200,9 +218,12 @@ function isFlush(hand: string[]): boolean {
 * before to get the value of the card.
 */
 function isStraight(hand: string[]): boolean {
-    // DELETE the following line and replace it with
-    // a working solution for the function.
-    return false;
+
+    if (getCardValue(hand[0]) === getCardValue(hand[1]) - 1 && getCardValue(hand[0]) === getCardValue(hand[2]) - 2 && getCardValue(hand[0]) === getCardValue(hand[3]) - 3 && getCardValue(hand[0]) === getCardValue(hand[4]) - 4) {
+        return true
+    }
+
+    else { return false }
 }
 
 /**
@@ -214,8 +235,9 @@ function isStraight(hand: string[]): boolean {
 * A hand is a straight flush if it is a flush and a straight.
 */
 function isStraightFlush(hand: string[]): boolean {
-    // DELETE the following line and replace it with
-    // a working solution for the function.
+    if (isStraight(hand) && isFlush(hand)) {
+        return true
+    }
     return false;
 }
 
@@ -229,8 +251,9 @@ function isStraightFlush(hand: string[]): boolean {
 * and the lowest card value is a 6.
 */
 function isRoyalFlush(hand: string[]): boolean {
-    // DELETE the following line and replace it with
-    // a working solution for the function.
+    if (isStraightFlush(hand) && parseInt(hand[0][0]) >= 6) {
+        return true;
+    }
     return false;
 }
 
@@ -241,8 +264,11 @@ function isRoyalFlush(hand: string[]): boolean {
 * @returns true if the hand has four of a kind, false otherwise
 */
 function hasFourOfAKind(counts: number[]): boolean {
-    // DELETE the following line and replace it with
-    // a working solution for the function.
+    for (let i = 0; i < counts.length; i++) {
+        if (counts[i] === 4) {
+            return true;
+        }
+    }
     return false;
 }
 
@@ -253,9 +279,13 @@ function hasFourOfAKind(counts: number[]): boolean {
 * @returns true if the hand has three of a kind, false otherwise
 */
 function hasThreeOfAKind(counts: number[]): boolean {
-    // DELETE the following line and replace it with
-    // a working solution for the function.
+    for (let i = 0; i < counts.length; i++) {
+        if (counts[i] === 3) {
+            return true;
+        }
+    }
     return false;
+
 }
 
 /**
@@ -265,9 +295,13 @@ function hasThreeOfAKind(counts: number[]): boolean {
 * @returns number of pairs in the hand (e.g. 2)
 */
 function numberOfPairs(counts: number[]): number {
-    // DELETE the following line and replace it with
-    // a working solution for the function.
-    return 0;
+    let numberpairs = 0;
+    for (let i = 0; i < counts.length; i++) {
+        if (counts[i] === 2) {
+            numberpairs++
+        }
+    }
+    return numberpairs;
 }
 
 /**
@@ -277,8 +311,9 @@ function numberOfPairs(counts: number[]): number {
 * @returns true if the hand has two pairs, false otherwise
 */
 function hasTwoPairs(counts: number[]): boolean {
-    // DELETE the following line and replace it with
-    // a working solution for the function.
+    if (numberOfPairs(counts) === 2) {
+        return true
+    }
     return false;
 }
 
@@ -289,8 +324,9 @@ function hasTwoPairs(counts: number[]): boolean {
 * @returns true if the hand has a pair, false otherwise
 */
 function hasPair(counts: number[]): boolean {
-    // DELETE the following line and replace it with
-    // a working solution for the function.
+    if (numberOfPairs(counts) === 1) {
+        return true;
+    }
     return false;
 }
 
@@ -303,7 +339,8 @@ function hasPair(counts: number[]): boolean {
 * A hand is a full house if it has three of a kind and a pair.
 */
 function isFullHouse(counts: number[]): boolean {
-    // DELETE the following line and replace it with
-    // a working solution for the function.
+    if (hasThreeOfAKind(counts) && numberOfPairs(counts) === 1) {
+        return true;
+    }
     return false;
 }
